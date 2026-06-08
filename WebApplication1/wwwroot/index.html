@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edward Raff | Full Stack Software Engineer</title>
+  <meta name="description" content="Edward Raff is a full stack software engineer based in Virginia Beach — C#, ASP.NET Core, SQL, JavaScript. Fresh out of TrueCoders Academy and actively seeking his first dev role." />
+  <meta property="og:title" content="Edward Raff | Full Stack Software Engineer" />
+  <meta property="og:description" content="Artist. Educator. Builder. Full stack engineer with a background in custom art and 10+ years teaching. Open to work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="profile2.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Edward Raff | Full Stack Software Engineer" />
+  <meta name="twitter:description" content="Full stack engineer — C#, ASP.NET Core, SQL, JavaScript. Open to work." />
+  <link rel="icon" type="image/png" href="profile2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #071a2e;
+      --surface: #0c2340;
+      --surface2: #102d52;
+      --border: #1a3f6b;
+      --accent: #1fb8aa;
+      --accent2: #c4956a;
+      --accent3: #7dd8f0;
+      --accent4: #f0b07a;
+      --accent5: #a8e6cf;
+      --text: #ddeef5;
+      --muted: #6fa3b8;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 110% 45% at 50% 0%, rgba(210, 75, 5, 0.28) 0%, rgba(170, 45, 0, 0.12) 40%, transparent 65%),
+        radial-gradient(ellipse 130% 55% at 75% 0%, rgba(125,216,240,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 40% at 10% 100%, rgba(196,149,106,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 95% 60%, rgba(31,184,170,0.06) 0%, transparent 55%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(7, 26, 46, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.2rem;
+      color: var(--accent3);
+      letter-spacing: 0.02em;
+      text-shadow: 2px 2px 0 rgba(31,184,170,0.3);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Caveat', cursive;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent3); }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    section:first-of-type { padding-top: 10rem; }
+
+    .section-label {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1rem;
+      color: var(--accent3);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, var(--accent3), transparent);
+      margin-top: 2px;
+      border-radius: 2px;
+    }
+
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text);
+    }
+
+    h3 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .divider {
+      border: none;
+      border-top: 2px dashed rgba(26,63,107,0.8);
+      margin: 0;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% -5%, rgba(255, 115, 15, 0.55) 0%, rgba(230, 70, 5, 0.3) 25%, rgba(180, 40, 0, 0.1) 50%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 20% 60%, rgba(31,184,170,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 30%, rgba(16, 60, 100, 0.30) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 50% 90%, rgba(240,176,122,0.07) 0%, transparent 60%);
+      animation: tide 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #hero > * { position: relative; z-index: 1; }
+
+    @keyframes tide {
+      0%   { opacity: 0.8; transform: scale(1) translateY(0); }
+      100% { opacity: 1;   transform: scale(1.04) translateY(-12px); }
+    }
+
+    /* ── SUNBEAMS ── */
+    #hero > .sunbeams {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 150vw);
+      width: 300vw;
+      height: 300vw;
+      transform-origin: 50% 0;
+      background: repeating-conic-gradient(
+        from 0deg at 50% 0%,
+        rgba(255, 150, 40, 0.11) 0deg 5deg,
+        transparent 5deg 14deg
+      );
+      z-index: 0;
+      pointer-events: none;
+      animation: sun-spin 60s linear infinite;
+    }
+
+    @keyframes sun-spin {
+      to { transform: rotate(360deg); }
+    }
+
+
+    .hero-greeting {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent4);
+      margin-bottom: 1rem;
+    }
+
+    .hero-name { color: var(--text); margin-bottom: 0.4rem; }
+
+    .hero-title {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      color: var(--accent3);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.6rem;
+      border-radius: 6px;
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--accent);
+      box-shadow: 4px 4px 0 rgba(31,184,170,0.35);
+    }
+
+    .btn-primary:hover {
+      background: #179688;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 rgba(31,184,170,0.35);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--accent3);
+      color: var(--accent3);
+      background: transparent;
+      box-shadow: 4px 4px 0 rgba(125,216,240,0.2);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent4);
+      color: var(--accent4);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 rgba(240,176,122,0.2);
+    }
+
+    .spark {
+      display: inline-block;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .open-to-work {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent5);
+      border: 2px solid var(--accent5);
+      border-radius: 20px;
+      padding: 0.2rem 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .open-to-work::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent5);
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      animation: blink 1.6s ease-in-out infinite;
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-card {
+      background: var(--surface);
+      border: 2px solid var(--accent3);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 6px 6px 0 rgba(125,216,240,0.15);
+    }
+
+    .about-avatar {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      overflow: hidden;
+      border: 3px solid var(--accent3);
+      box-shadow: 3px 3px 0 var(--accent2);
+    }
+
+    .about-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .about-card-name {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+      color: var(--accent3);
+    }
+
+    .about-card-role {
+      color: var(--accent2);
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      position: relative;
+    }
+
+    .skill-card:nth-child(odd)  { box-shadow: 5px 5px 0 rgba(125,216,240,0.18); }
+    .skill-card:nth-child(even) { box-shadow: 5px 5px 0 rgba(240,176,122,0.18); }
+
+    .skill-card:hover {
+      border-color: var(--accent3);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 rgba(125,216,240,0.25);
+    }
+
+    .skill-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-title {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      color: var(--accent3);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 0.15rem 0.55rem;
+      font-family: 'Caveat', cursive;
+      font-size: 0.9rem;
+      color: var(--accent4);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 5px 5px 0 rgba(125,216,240,0.12);
+    }
+
+    .project-card:hover {
+      border-color: var(--accent3);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 rgba(125,216,240,0.22);
+    }
+
+    .project-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, var(--surface) 0%, #0a2a3a 100%);
+      box-shadow: 6px 6px 0 rgba(31,184,170,0.3);
+    }
+
+    .project-card.featured:hover {
+      border-color: var(--accent3);
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0 rgba(31,184,170,0.35);
+    }
+
+    .project-card.featured .project-badge {
+      display: inline-block;
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent4);
+      border: 1.5px solid var(--accent4);
+      border-radius: 4px;
+      padding: 0.05rem 0.55rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .project-icon { font-size: 1.5rem; }
+
+    .project-links { display: flex; gap: 0.5rem; }
+
+    .project-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 1.5px solid var(--border);
+      padding: 0.1rem 0.6rem;
+      border-radius: 5px;
+      transition: all 0.15s;
+    }
+
+    .project-link:hover { color: var(--accent3); border-color: var(--accent3); }
+
+    .project-desc { color: var(--muted); font-size: 0.9rem; }
+
+    /* ── COURSEWORK ── */
+    .coursework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .coursework-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 5px 5px 0 rgba(125,216,240,0.12);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .coursework-card:nth-child(even) { box-shadow: 5px 5px 0 rgba(240,176,122,0.12); }
+
+    .coursework-card:hover {
+      border-color: var(--accent3);
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 rgba(125,216,240,0.22);
+    }
+
+    .coursework-title {
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent3);
+      margin-bottom: 0.75rem;
+    }
+
+    .repo-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .repo-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Caveat', cursive;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1.5px solid var(--border);
+      transition: all 0.15s;
+      display: block;
+    }
+
+    .repo-link:hover {
+      color: var(--accent3);
+      border-color: var(--accent3);
+      background: rgba(125,216,240,0.05);
+    }
+
+    /* ── BEYOND CODE ── */
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .beyond-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .beyond-card:nth-child(odd)  { box-shadow: 4px 4px 0 rgba(240,176,122,0.18); }
+    .beyond-card:nth-child(even) { box-shadow: 4px 4px 0 rgba(168,230,207,0.18); }
+
+    .beyond-card:hover {
+      border-color: var(--accent4);
+      transform: translate(-3px, -3px);
+    }
+
+    .beyond-card:nth-child(even):hover {
+      border-color: var(--accent5);
+    }
+
+    .beyond-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    .beyond-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--accent3);
+    }
+
+    .beyond-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-left: 5px solid var(--accent2);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      box-shadow: 6px 6px 0 rgba(196,149,106,0.2);
+    }
+
+    .edu-icon { font-size: 2.2rem; flex-shrink: 0; }
+
+    .edu-school {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--accent3);
+    }
+
+    .edu-program {
+      font-family: 'Caveat', cursive;
+      color: var(--accent2);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-date {
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-desc { color: var(--muted); font-size: 0.9rem; }
+
+    .edu-highlights {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 7px 7px 0 rgba(125,216,240,0.15);
+      position: relative;
+    }
+
+    /* corner accent marks */
+    .contact-wrapper::before,
+    .contact-wrapper::after {
+      content: '✦';
+      position: absolute;
+      font-size: 1.1rem;
+      color: var(--accent3);
+      opacity: 0.5;
+    }
+    .contact-wrapper::before { top: 1rem; left: 1rem; }
+    .contact-wrapper::after  { bottom: 1rem; right: 1rem; }
+
+    .contact-wrapper p {
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0.75rem auto 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'Caveat', cursive;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.5rem 1.1rem;
+      border: 2px solid var(--border);
+      border-radius: 7px;
+      transition: all 0.15s;
+    }
+
+    .contact-link:hover {
+      color: var(--accent3);
+      border-color: var(--accent3);
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 rgba(125,216,240,0.2);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      border-top: 2px dashed rgba(26,63,107,0.8);
+    }
+
+    /* ── FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--accent3);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-card { display: none; }
+      .projects-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.25rem; }
+      section { padding: 4rem 1.25rem; }
+      .beyond-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .nav-hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(7, 26, 46, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 150;
+      }
+
+      .nav-links a {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">edward.raff.dev</span>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#coursework">Coursework</a></li>
+      <li><a href="#beyond">Beyond Code</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="sunbeams" aria-hidden="true"></div>
+    <p class="hero-greeting">hey, world <span class="spark">✦</span></p>
+    <span class="open-to-work">Open to Work</span>
+    <h1 class="hero-name">Edward Raff</h1>
+    <p class="hero-title">Full Stack Software Engineer</p>
+    <p class="hero-desc">
+      Artist. Educator. Builder. I've spent over a decade shaping minds in the classroom,
+      created custom art for pro athletes, and now I'm channeling that same drive and
+      creativity into software. Fresh out of TrueCoders Academy &mdash; ready to ship
+      things that matter.
+    </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      <a href="EBRresume.pdf" target="_blank" rel="noopener" class="btn btn-outline">📄 Resume</a>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-in">
+    <p class="section-label">01 &mdash; About</p>
+    <h2>A Little About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Hey, I'm Edward &mdash; a 36-year-old full stack software engineer based in Virginia Beach.
+          I genuinely love life, and I try to bring an open mind and good energy into everything. I recently completed the
+          intensive <strong>TrueCoders Academy Full Stack Software Engineering</strong> bootcamp,
+          where I built real-world applications from the ground up using C#, ASP.NET Core, SQL,
+          JavaScript, and more.
+        </p>
+        <p>
+          My background is anything but conventional. For over ten years I've worked as an educator,
+          helping people grow &mdash; a skill that translates directly into collaborative development
+          environments. At the same time, I've run my own creative business customizing shoes for
+          clients, and I do tattoo work as well.
+          My <a href="http://inkyours.com" target="_blank" rel="noopener" style="color:var(--accent2);text-decoration:none;">final project at TrueCoders</a>
+          &mdash; <strong>Ink Your Shoes</strong> &mdash; is a live commission platform I built and deployed,
+          combining all of that: an intake system for custom shoe and tattoo orders.
+        </p>
+        <p>
+          Working with me, you will get creativity, discipline, and a genuine passion for problem-solving. 
+          I'm actively looking for a team where I can keep growing and contribute from
+          day one.
+        </p>
+      </div>
+      <div class="about-card">
+        <div class="about-avatar">
+          <img src="profile2.png" alt="Edward Raff" />
+        </div>
+        <div class="about-card-name">Edward Raff</div>
+        <div class="about-card-role">// full_stack_dev</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-in">
+    <p class="section-label">02 &mdash; Skills</p>
+    <h2>Tech Stack</h2>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-title">Frontend</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Building responsive, accessible user interfaces.</p>
+        <div class="skill-tags">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Bootstrap</span>
+          <span class="tag">Razor Pages</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-title">Backend</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Designing and building reliable server-side APIs.</p>
+        <div class="skill-tags">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">.NET</span>
+          <span class="tag">MVC</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-title">Database</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Structuring and querying data efficiently.</p>
+        <div class="skill-tags">
+          <span class="tag">SQL</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Entity Framework</span>
+          <span class="tag">LINQ</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🔧</div>
+        <div class="skill-title">Tools & Workflow</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Working effectively in modern dev environments.</p>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Rider</span>
+          <span class="tag">Postman</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">📐</div>
+        <div class="skill-title">Concepts</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Foundational engineering principles.</p>
+        <div class="skill-tags">
+          <span class="tag">OOP</span>
+          <span class="tag">MVC</span>
+          <span class="tag">SOLID</span>
+          <span class="tag">Agile</span>
+          <span class="tag">REST</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-title">Currently Learning</div>
+        <p style="color:var(--muted);font-size:0.875rem;">Expanding my skill set every day.</p>
+        <div class="skill-tags">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Azure</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fade-in">
+    <p class="section-label">03 &mdash; Projects</p>
+    <h2>Featured Work</h2>
+    <div class="projects-grid">
+
+      <div class="project-card featured">
+        <div class="project-header">
+          <div>
+            <span class="project-badge">// capstone project</span>
+            <div class="project-icon">👟</div>
+          </div>
+          <div class="project-links">
+            <a href="http://inkyours.com" target="_blank" rel="noopener" class="project-link">Live Site</a>
+            <a href="https://github.com/inkyourshoes/iysSite" target="_blank" rel="noopener" class="project-link">GitHub</a>
+          </div>
+        </div>
+        <h3>Ink Your Shoes</h3>
+        <p class="project-desc">
+          My TrueCoders Academy capstone project &mdash; a live commission intake platform for
+          custom shoe designs and tattoo work. Clients submit order details, choose their
+          service type, upload inspiration images, and receive a follow-up. Built and deployed
+          from scratch.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">C#</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-icon">⚙️</div>
+          <div class="project-links">
+            <a href="https://github.com/inkyourshoes/ASPNET" target="_blank" rel="noopener" class="project-link">GitHub</a>
+          </div>
+        </div>
+        <h3>ASP.NET Core App</h3>
+        <p class="project-desc">
+          An ASP.NET Core web application built during TrueCoders bootcamp, practicing
+          MVC architecture, routing, and backend development with C#.
+        </p>
+        <div class="skill-tags">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">MVC</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- COURSEWORK -->
+  <section id="coursework" class="fade-in">
+    <p class="section-label">04 &mdash; Coursework</p>
+    <h2>Learning in Public</h2>
+    <p style="color:var(--muted);margin-bottom:2rem;">
+      Every exercise and project from my TrueCoders bootcamp journey &mdash; organized by topic.
+    </p>
+    <div class="coursework-grid">
+
+      <div class="coursework-card">
+        <div class="skill-icon">🖥️</div>
+        <div class="coursework-title">Frontend</div>
+        <div class="repo-links">
+          <a href="https://github.com/inkyourshoes/HTML_Exercise" target="_blank" rel="noopener" class="repo-link">HTML Exercise</a>
+          <a href="https://github.com/inkyourshoes/CSS_Exercise" target="_blank" rel="noopener" class="repo-link">CSS Exercise</a>
+          <a href="https://github.com/inkyourshoes/JavaScript_Variables" target="_blank" rel="noopener" class="repo-link">JavaScript Variables</a>
+          <a href="https://github.com/inkyourshoes/JavaScript_Selections_Loops" target="_blank" rel="noopener" class="repo-link">JavaScript Selections &amp; Loops</a>
+        </div>
+      </div>
+
+      <div class="coursework-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="coursework-title">Backend &amp; Databases</div>
+        <div class="repo-links">
+          <a href="https://github.com/inkyourshoes/APIs-and-JSON-Exercise" target="_blank" rel="noopener" class="repo-link">APIs &amp; JSON Exercise</a>
+          <a href="https://github.com/inkyourshoes/ORM-and-Dapper-Exercise" target="_blank" rel="noopener" class="repo-link">ORM &amp; Dapper</a>
+          <a href="https://github.com/inkyourshoes/ReposSql" target="_blank" rel="noopener" class="repo-link">Repos SQL</a>
+          <a href="https://github.com/inkyourshoes/LinqExercise" target="_blank" rel="noopener" class="repo-link">LINQ Exercise</a>
+        </div>
+      </div>
+
+      <div class="coursework-card">
+        <div class="skill-icon">🏗️</div>
+        <div class="coursework-title">OOP &amp; Design Patterns</div>
+        <div class="repo-links">
+          <a href="https://github.com/inkyourshoes/AbstractClassesDemo" target="_blank" rel="noopener" class="repo-link">Abstract Classes Demo</a>
+          <a href="https://github.com/inkyourshoes/InterfaceExercise" target="_blank" rel="noopener" class="repo-link">Interface Exercise</a>
+          <a href="https://github.com/inkyourshoes/Factory-Pattern" target="_blank" rel="noopener" class="repo-link">Factory Pattern</a>
+          <a href="https://github.com/inkyourshoes/Factory-Pattern-Exercise-2" target="_blank" rel="noopener" class="repo-link">Factory Pattern 2</a>
+          <a href="https://github.com/inkyourshoes/InheritanceExercise" target="_blank" rel="noopener" class="repo-link">Inheritance Exercise</a>
+          <a href="https://github.com/inkyourshoes/Static-Exercise" target="_blank" rel="noopener" class="repo-link">Static Exercise</a>
+          <a href="https://github.com/inkyourshoes/CarLotSimulator" target="_blank" rel="noopener" class="repo-link">Car Lot Simulator</a>
+          <a href="https://github.com/inkyourshoes/CollectionsMasterApp" target="_blank" rel="noopener" class="repo-link">Collections Master App</a>
+        </div>
+      </div>
+
+      <div class="coursework-card">
+        <div class="skill-icon">🧩</div>
+        <div class="coursework-title">Algorithms &amp; Testing</div>
+        <div class="repo-links">
+          <a href="https://github.com/inkyourshoes/fizzBuzz" target="_blank" rel="noopener" class="repo-link">FizzBuzz</a>
+          <a href="https://github.com/inkyourshoes/PalindromeExercise" target="_blank" rel="noopener" class="repo-link">Palindrome Exercise</a>
+          <a href="https://github.com/inkyourshoes/TacoParser" target="_blank" rel="noopener" class="repo-link">TacoParser</a>
+          <a href="https://github.com/inkyourshoes/ProblematicProblem" target="_blank" rel="noopener" class="repo-link">Problematic Problem</a>
+          <a href="https://github.com/inkyourshoes/ExceptionHandlingExercise" target="_blank" rel="noopener" class="repo-link">Exception Handling</a>
+          <a href="https://github.com/inkyourshoes/UnitTestingExercise" target="_blank" rel="noopener" class="repo-link">Unit Testing Exercise</a>
+          <a href="https://github.com/inkyourshoes/StudentGrades" target="_blank" rel="noopener" class="repo-link">Student Grades</a>
+        </div>
+      </div>
+
+      <div class="coursework-card">
+        <div class="skill-icon">📝</div>
+        <div class="coursework-title">C# Fundamentals</div>
+        <div class="repo-links">
+          <a href="https://github.com/inkyourshoes/Classes-Exercise" target="_blank" rel="noopener" class="repo-link">Classes Exercise</a>
+          <a href="https://github.com/inkyourshoes/ArraysAndListsProject" target="_blank" rel="noopener" class="repo-link">Arrays &amp; Lists</a>
+          <a href="https://github.com/inkyourshoes/MethodsExercise" target="_blank" rel="noopener" class="repo-link">Methods Exercise</a>
+          <a href="https://github.com/inkyourshoes/Method-Overloading-Exercise-" target="_blank" rel="noopener" class="repo-link">Method Overloading</a>
+          <a href="https://github.com/inkyourshoes/Selection-Statements-Exercise" target="_blank" rel="noopener" class="repo-link">Selection Statements</a>
+          <a href="https://github.com/inkyourshoes/Selection-Statement-Exercise-2" target="_blank" rel="noopener" class="repo-link">Selection Statements 2</a>
+          <a href="https://github.com/inkyourshoes/IterationStatementsProject" target="_blank" rel="noopener" class="repo-link">Iteration Statements</a>
+          <a href="https://github.com/inkyourshoes/Operators-Exercise" target="_blank" rel="noopener" class="repo-link">Operators Exercise</a>
+          <a href="https://github.com/inkyourshoes/Syntax-and-Syntax-Sugar-Exercise" target="_blank" rel="noopener" class="repo-link">Syntax &amp; Syntax Sugar</a>
+          <a href="https://github.com/inkyourshoes/ChristmasWithTypes" target="_blank" rel="noopener" class="repo-link">Christmas with Types</a>
+          <a href="https://github.com/inkyourshoes/BranchAndMerge" target="_blank" rel="noopener" class="repo-link">Branch &amp; Merge</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- BEYOND CODE -->
+  <section id="beyond" class="fade-in">
+    <p class="section-label">05 &mdash; Beyond Code</p>
+    <h2>Life Outside the IDE</h2>
+    <p style="color:var(--muted);margin-bottom:2rem;">
+      Software is one outlet for my creativity &mdash; here's what else keeps me going.
+    </p>
+    <div class="beyond-grid">
+      <div class="beyond-card">
+        <div class="beyond-icon">👟</div>
+        <div class="beyond-label">Custom Shoe Artist</div>
+        <div class="beyond-desc">Hand-painting and designing custom kicks for clients &mdash; including pro athletes.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🖋️</div>
+        <div class="beyond-label">Tattoo Artist</div>
+        <div class="beyond-desc">Bringing original art to life on skin. Detail-oriented work that demands precision.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🍎</div>
+        <div class="beyond-label">Educator</div>
+        <div class="beyond-desc">10+ years in the classroom. Teaching sharpens communication, patience, and empathy.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🏀</div>
+        <div class="beyond-label">Basketball</div>
+        <div class="beyond-desc">On the court staying sharp. Teamwork and strategy on and off the hardwood.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🛹</div>
+        <div class="beyond-label">Skateboarding</div>
+        <div class="beyond-desc">Chasing the feeling of landing something new. Persistence in action.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🏂</div>
+        <div class="beyond-label">Snowboarding</div>
+        <div class="beyond-desc">Mountains, fresh powder, and the freedom of the descent.</div>
+      </div>
+      <div class="beyond-card">
+        <div class="beyond-icon">🚴</div>
+        <div class="beyond-label">Biking</div>
+        <div class="beyond-desc">Clearing the head and covering ground &mdash; two wheels, no traffic.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- EDUCATION -->
+  <section id="education" class="fade-in">
+    <p class="section-label">06 &mdash; Education</p>
+    <h2>Where I Learned</h2>
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-school">TrueCoders Academy</div>
+        <div class="edu-program">Full Stack Software Engineering</div>
+        <div class="edu-date">2024 &mdash; 2025 &nbsp;|&nbsp; Certificate of Completion</div>
+        <p class="edu-desc">
+          An immersive, project-based bootcamp covering the complete web development stack.
+          Coursework included C#, ASP.NET Core, SQL databases, HTML/CSS/JavaScript, Git version
+          control, REST API design, Entity Framework, LINQ, object-oriented programming, and Agile
+          development methodologies. Graduated having built and deployed multiple real-world
+          applications, including a live capstone project at
+          <a href="http://inkyours.com" target="_blank" rel="noopener" style="color:var(--accent2);text-decoration:none;">inkyours.com</a>.
+        </p>
+        <div class="edu-highlights">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET Core</span>
+          <span class="tag">SQL</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Entity Framework</span>
+          <span class="tag">Git</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">OOP</span>
+          <span class="tag">Agile</span>
+          <span class="tag">MVC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <p class="section-label">07 &mdash; Contact</p>
+    <div class="contact-wrapper">
+      <h2 style="margin-bottom:0">Let's Work Together</h2>
+      <p>
+        I'm actively looking for my first software engineering role. Whether you have a
+        position, a project, or just want to connect &mdash; my inbox and phone are always open.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:inkyourshoes@gmail.com" class="contact-link">
+          <span>✉</span> inkyourshoes@gmail.com
+        </a>
+        <a href="tel:+12525489605" class="contact-link">
+          <span>📞</span> (252) 548-9605
+        </a>
+        <a href="http://inkyours.com" target="_blank" rel="noopener" class="contact-link">
+          <span>👟</span> inkyours.com
+        </a>
+        <a href="https://github.com/inkyourshoes" class="contact-link" target="_blank" rel="noopener">
+          <span>🐙</span> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/edward-raff-23a989189/" class="contact-link" target="_blank" rel="noopener">
+          <span>💼</span> LinkedIn
+        </a>
+        <a href="https://instagram.com/inkyourshoes" class="contact-link" target="_blank" rel="noopener">
+          <span>📸</span> @inkyourshoes
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>designed &amp; built by <span style="color:var(--accent)">Edward Raff</span> &nbsp;✦&nbsp; 2026</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Mobile nav
+    const hamburger = document.querySelector('.nav-hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:truecoders.io)",
+      "WebFetch(domain:inkyours.com)",
+      "Bash(/usr/local/share/dotnet/dotnet restore:*)",
+      "Read(//Users/inkyourshoes/.dotnet/sdk/**)",
+      "Read(//usr/local/share/dotnet/sdk/**)",
+      "Read(//Library/**)",
+      "Bash(~/.dotnet/dotnet restore:*)"
+    ]
+  }
+}
