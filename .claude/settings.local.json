@@ -8,7 +8,25 @@
       "Read(//Users/inkyourshoes/.dotnet/sdk/**)",
       "Read(//usr/local/share/dotnet/sdk/**)",
       "Read(//Library/**)",
-      "Bash(~/.dotnet/dotnet restore:*)"
+      "Bash(~/.dotnet/dotnet restore:*)",
+      "Bash(dotnet --version)",
+      "Bash(dotnet build *)",
+      "Bash(head -20 /tmp/portfolio.log)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\nredirect=%{redirect_url}\\\\n\" https://app-260523152423.azurewebsites.net/)",
+      "Bash(curl -s -D - -o /dev/null https://app-260523152423.azurewebsites.net/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP status: %{http_code}\\\\n\" http://localhost:5199/)",
+      "Read(//private/tmp/**)",
+      "Bash(open \"http://localhost:5199/#projects\")",
+      "Bash(lsof -ti:5199)",
+      "Bash(xargs kill -9)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(curl -s -o /dev/null -w \"status=%{http_code}\\\\n\" https://app-260523152423.azurewebsites.net/)",
+      "Bash(git push *)",
+      "Bash(git rev-list *)",
+      "Bash(xargs -I{} du -h {})",
+      "Bash(git ls-remote *)",
+      "Bash(git config *)"
     ]
   }
 }
