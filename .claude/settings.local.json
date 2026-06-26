@@ -27,7 +27,11 @@
       "Bash(xargs -I{} du -h {})",
       "Bash(git ls-remote *)",
       "Bash(git config *)",
-      "Bash(md5 ~/Downloads/EBRresume.pdf WebApplication1/wwwroot/EBRresume.pdf)"
+      "Bash(md5 ~/Downloads/EBRresume.pdf WebApplication1/wwwroot/EBRresume.pdf)",
+      "Bash(curl -s -o live_resume.pdf \"https://app-260523152423.azurewebsites.net/EBRresume.pdf\")",
+      "Bash(md5 -q live_resume.pdf)",
+      "Bash(echo \"LIVE Azure hash:  $\\(md5 -q live_resume.pdf\\)\")",
+      "Bash(awk '{print \"size:\", $5, \"bytes\"}')"
     ]
   }
 }
